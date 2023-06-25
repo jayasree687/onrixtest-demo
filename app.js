@@ -174,15 +174,54 @@ OX.init(config)
       });
 
       document.getElementById("silver").addEventListener("click", () => {
-        changeCarColor(0xffffff);
+        // changeCarColor(0xffffff);
+        scene.remove(car);
+        gltfLoader.load("bloodsny.glb", (gltf) => {
+          car = gltf.scene;
+          car.traverse((child) => {
+            if (child.material) {
+              console.log("updating material");
+              child.material.envMap = envMap;
+              child.material.needsUpdate = true;
+            }
+          });
+          car.scale.set(0.5, 0.5, 0.5);
+          scene.add(car);
+        });
       });
 
       document.getElementById("orange").addEventListener("click", () => {
-        changeCarColor(0xff2600);
+        // changeCarColor(0xff2600);
+        scene.remove(car);
+        gltfLoader.load("C_ARM.glb", (gltf) => {
+          car = gltf.scene;
+          car.traverse((child) => {
+            if (child.material) {
+              console.log("updating material");
+              child.material.envMap = envMap;
+              child.material.needsUpdate = true;
+            }
+          });
+          car.scale.set(0.5, 0.5, 0.5);
+          scene.add(car);
+        });
       });
 
       document.getElementById("blue").addEventListener("click", () => {
-        changeCarColor(0x0011ff);
+        // changeCarColor(0x0011ff);
+        scene.remove(car);
+        gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+          car = gltf.scene;
+          car.traverse((child) => {
+            if (child.material) {
+              console.log("updating material");
+              child.material.envMap = envMap;
+              child.material.needsUpdate = true;
+            }
+          });
+          car.scale.set(0.5, 0.5, 0.5);
+          scene.add(car);
+        });
       });
     });
 
