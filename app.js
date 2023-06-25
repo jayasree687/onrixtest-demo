@@ -202,7 +202,7 @@ OX.init(config)
         //changeCarColor(0xffffff);
 	      
 	 document.getElementById("audio").play()
- 
+   setupRenderer(rendererCanvas);
 		const gltfLoader = new GLTFLoader();
     gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
       car = gltf.scene;
