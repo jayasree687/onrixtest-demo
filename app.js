@@ -1,7 +1,6 @@
 // ====== Imports ======
 
-// import OnirixSDK from "https://unpkg.com/@onirix/ar-engine-sdk@1.1.0/dist/ox-sdk.esm.js";
-import OnirixEmbedSDK from "https://unpkg.com/@onirix/embed-sdk@latest/dist/ox-embed-sdk.esm.js";
+import OnirixSDK from "https://unpkg.com/@onirix/ar-engine-sdk@1.3.0/dist/ox-sdk.esm.js";
 import * as THREE from "https://cdn.skypack.dev/three@0.127.0";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
@@ -110,17 +109,13 @@ function changeCarColor(value) {
 
 // ====== Onirix SDK ======
 
-// const OX = new OnirixEmbedSDK(
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUyMDIsInByb2plY3RJZCI6MTQ0MjgsInJvbGUiOjMsImlhdCI6MTYxNjc1ODY5NX0.8F5eAPcBGaHzSSLuQAEgpdja9aEZ6Ca_Ll9wg84Rp5k"
-// );
+const OX = new OnirixSDK(
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUyMDIsInByb2plY3RJZCI6MTQ0MjgsInJvbGUiOjMsImlhdCI6MTYxNjc1ODY5NX0.8F5eAPcBGaHzSSLuQAEgpdja9aEZ6Ca_Ll9wg84Rp5k"
+);
 
-const embedSDK = new OnirixEmbedSDK();
-embedSDK.connect();
-
-embedSDK.subscribe(OnirixEmbedSDK.Events.ELEMENT_CLICK, (params) => {
-  console.log("Element with oid: " + params.oid + " was clicked!");
-});
-
+const config = {
+  mode: OnirixSDK.TrackingMode.Surface,
+};
 
 OX.init(config)
   .then((rendererCanvas) => {
@@ -341,26 +336,26 @@ OX.init(config)
  });
  
     // Subscribe to events
-    // OX.subscribe(OnirixEmbedSDK.Events.ON_POSE, function (pose) {
-    //   updatePose(pose);
-    // });
+    OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
+      updatePose(pose);
+    });
 
-    // OX.subscribe(OnirixEmbedSDK.Events.OnResize, function () {
-    //   onResize();
-    // });
+    OX.subscribe(OnirixSDK.Events.OnResize, function () {
+      onResize();
+    });
 
-    // OX.subscribe(OnirixEmbedSDK.Events.ON_TOUCH_START, function (touchPos) {
-    //   onTouch(touchPos);
-    // });
+    OX.subscribe(OnirixSDK.Events.OnTouch, function (touchPos) {
+      onTouch(touchPos);
+    });
 
-    // OX.subscribe(OnirixEmbedSDK.Events.OnHitTestResult, function (hitResult) {
-    //   document.getElementById("initializing").style.display = "none";
-    //   onHitResult(hitResult);
-    // });
+    OX.subscribe(OnirixSDK.Events.OnHitTestResult, function (hitResult) {
+      document.getElementById("initializing").style.display = "none";
+      onHitResult(hitResult);
+    });
 
-    // OX.subscribe(OnirixEmbedSDK.Events.OnFrame, function() {
-    //   render();
-    // });
+    OX.subscribe(OnirixSDK.Events.OnFrame, function() {
+      render();
+    });
 
   })
   .catch((error) => {
