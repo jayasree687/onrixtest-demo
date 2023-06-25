@@ -160,7 +160,6 @@ OX.init(config)
       //changeCarColor(0xffffff);
       setupRenderer(rendererCanvas);
       // const gltfLoader = new GLTFLoader();
-      gltfLoader.clear();
       gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
         car = gltf.scene;
         car.traverse((child) => {
