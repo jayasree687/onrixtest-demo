@@ -52,7 +52,7 @@ function setupRenderer(rendererCanvas) {
   );
   animationMixers = [];
   clock = new THREE.Clock(true);
-}
+
 
   // Rotate floor to be horizontal
   floor.rotateX(Math.PI / 2);
