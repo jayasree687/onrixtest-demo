@@ -125,8 +125,9 @@ OX.init(config)
 
     // Load car model
     const gltfLoader = new GLTFLoader();
-    gltfLoader.load("range_rover.glb", (gltf) => {
+    gltfLoader.load("bloodsny.glb", (gltf) => {
       car = gltf.scene;
+      const animations = gltf.animations;
       car.traverse((child) => {
         if (child.material) {
           console.log("updating material");
@@ -136,7 +137,10 @@ OX.init(config)
       });
       car.scale.set(0.5, 0.5, 0.5);
       scene.add(car);
-
+      const mixer = new THREE.AnimationMixer(model);
+      const action = mixer.clipAction(animations[0]);
+      action.play();
+      animationMixers.push(mixer); 
       // All loaded, so hide loading screen
       document.getElementById("loading-screen").style.display = "none";
 
