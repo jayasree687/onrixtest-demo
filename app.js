@@ -50,6 +50,9 @@ function setupRenderer(rendererCanvas) {
       side: THREE.DoubleSide,
     })
   );
+  animationMixers = [];
+  clock = new THREE.Clock(true);
+}
 
   // Rotate floor to be horizontal
   floor.rotateX(Math.PI / 2);
@@ -178,12 +181,18 @@ OX.init(config)
         scene.remove(car);
         gltfLoader.load("bloodsny.glb", (gltf) => {
           car = gltf.scene;
+          const animations = gltf.animations;
           car.traverse((child) => {
             if (child.material) {
               console.log("updating material");
               child.material.envMap = envMap;
               child.material.needsUpdate = true;
             }
+            // Play model animation
+      const mixer = new THREE.AnimationMixer(model);
+      const action = mixer.clipAction(animations[0]);
+      action.play();
+      animationMixers.push(mixer);
           });
           car.scale.set(0.5, 0.5, 0.5);
           scene.add(car);
