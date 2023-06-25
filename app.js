@@ -192,6 +192,9 @@ OX.init(config)
           const mixer = new THREE.AnimationMixer(car);
           const action = mixer.clipAction(animations[0]);
           action.play();
+          setInterval(() => {
+            action.stop()
+          }, 60000);
          animationMixers.push(mixer);
         });
       });
