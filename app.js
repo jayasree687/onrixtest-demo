@@ -127,6 +127,7 @@ OX.init(config)
     const gltfLoader = new GLTFLoader();
     gltfLoader.load("bloodsny.glb", (gltf) => {
       car = gltf.scene;
+      const animations = gltf.animations;
       car.traverse((child) => {
         if (child.material) {
           console.log("updating material");
@@ -136,6 +137,13 @@ OX.init(config)
       });
       car.scale.set(0.5, 0.5, 0.5);
       scene.add(car);
+      const mixer = new THREE.AnimationMixer(car);
+          const action = mixer.clipAction(animations[0]);
+          action.play();
+          setInterval(() => {
+            action.stop()
+          }, 60000);
+         animationMixers.push(mixer);
 
       // All loaded, so hide loading screen
       document.getElementById("loading-screen").style.display = "none";
