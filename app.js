@@ -185,6 +185,7 @@ OX.init(config)
       document.getElementById("silver").addEventListener("click", () => {
         // changeCarColor(0xffffff);
         scene.remove(car);
+        const gltfLoader = new GLTFLoader();
         gltfLoader.load("bloodsny.glb", (gltf) => {
           car = gltf.scene;
           const animations = gltf.animations;
