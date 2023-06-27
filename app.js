@@ -98,10 +98,6 @@ function placeCar() {
   OX.start();
 }
 
-function placeEthos() {
-  isEthosPlaced = true;
-  OX.start();
-}
 
 function scaleCar(value) {
   car.scale.set(value, value, value);
@@ -198,7 +194,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ethos.scale.set(0.6, 0.6, 0.6);
+    ethos.scale.set(0.1, 0.1, 0.1);
     scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ethos);
         const action = mixer.clipAction(animations[0]);
@@ -214,7 +210,7 @@ function loadGLB(filename){
     document.getElementById("initializing").style.display = "block";
 
     document.getElementById("tap-to-place").addEventListener("click", () => {
-      placeEthos();
+      placeCar();
       document.getElementById("transform-controls").style.display = "none";
       document.getElementById("color-controls").style.display = "block";
     });
