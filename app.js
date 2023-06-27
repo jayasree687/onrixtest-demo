@@ -167,7 +167,7 @@ OX.init(config)
 
       document.getElementById("black").addEventListener("click", () => {
         // changeCarColor(0x111111);
-        scene.remove(bloodsny.glb);
+        car.remove(bloodsny.glb);
         gltfLoader.load("ETHOSs.glb", (gltf) => {
           car = gltf.scene;
           car.traverse((child) => {
