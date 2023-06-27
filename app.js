@@ -166,7 +166,7 @@ OX.init(config)
       });
 
       document.getElementById("black").addEventListener("click", () => {
-         changemodel(range_rover.glb);
+         //changemodel(range_rover.glb);
          scene.remove(car);
         const gltfLoader = new GLTFLoader();
         gltfLoader.load("ETHOSs.glb", (gltf) => {
