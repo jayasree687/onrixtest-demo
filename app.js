@@ -197,7 +197,7 @@ OX.init(config)
               child.material.needsUpdate = true;
             }
           });
-          car.scale.set(0.1, 0.1, 0.1);
+          car.scale.set(0.5, 0.5, 0.5);
           scene.add(car);
           const mixer = new THREE.AnimationMixer(car);
           const action = mixer.clipAction(animations[0]);
