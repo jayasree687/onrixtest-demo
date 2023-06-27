@@ -121,6 +121,7 @@ const config = {
 };
 
 function loadGLB(filename){
+  const gltfLoader = new GLTFLoader();
   gltfLoader.load(filename, (gltf) => {
     const model = gltf.scene;
     car = gltf.scene;
@@ -162,41 +163,38 @@ function loadGLB(filename){
       rotateCar((rotationSlider.value * Math.PI) / 180);
     });
   });
+  // Subscribe to events
+  OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
+    updatePose(pose);
+  });
+
+  OX.subscribe(OnirixSDK.Events.OnResize, function () {
+    onResize();
+  });
+
+  OX.subscribe(OnirixSDK.Events.OnTouch, function (touchPos) {
+    onTouch(touchPos);
+  });
+
+  OX.subscribe(OnirixSDK.Events.OnHitTestResult, function (hitResult) {
+    document.getElementById("initializing").style.display = "none";
+    onHitResult(hitResult);
+  });
+
+  OX.subscribe(OnirixSDK.Events.OnFrame, function() {
+    const delta = clock.getDelta();
+    animationMixers.forEach((mixer) => {
+      mixer.update(delta);
+    });
+    render();
+  });
 }
 OX.init(config)
   .then((rendererCanvas) => {
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
-
     // Load car model
-    const gltfLoader = new GLTFLoader();
-    
     loadGLB("bloodsny.glb");
-    // Subscribe to events
-    OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
-      updatePose(pose);
-    });
-
-    OX.subscribe(OnirixSDK.Events.OnResize, function () {
-      onResize();
-    });
-
-    OX.subscribe(OnirixSDK.Events.OnTouch, function (touchPos) {
-      onTouch(touchPos);
-    });
-
-    OX.subscribe(OnirixSDK.Events.OnHitTestResult, function (hitResult) {
-      document.getElementById("initializing").style.display = "none";
-      onHitResult(hitResult);
-    });
-
-    OX.subscribe(OnirixSDK.Events.OnFrame, function() {
-      const delta = clock.getDelta();
-      animationMixers.forEach((mixer) => {
-        mixer.update(delta);
-      });
-      render();
-    });
 
   })
   .catch((error) => {
