@@ -94,14 +94,6 @@ function placeCar() {
   OX.start();
 }
 
-function scaleCar(value) {
-  car.scale.set(value, value, value);
-}
-
-function rotateCar(value) {
-  car.rotation.y = value;
-}
-
 function changemodel(value) {
   car.traverse((child) => {
     if (child.material && child.material.name === "CarPaint") {
