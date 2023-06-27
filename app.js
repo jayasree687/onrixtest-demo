@@ -298,7 +298,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    cARM.scale.set(0.1, 0.1, 0.1);
+    cARM.scale.set(0.5, 0.5, 0.5);
     scene.add(cARM);
     const mixer = new THREE.AnimationMixer(cARM);
         const action = mixer.clipAction(animations[0]);
