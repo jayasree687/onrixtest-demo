@@ -6,7 +6,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/l
 
 // ====== ThreeJS ======
 
-var renderer, scene, camera, floor, car, ethos,blood, envMap,clock,animationMixers;
+var renderer, scene, camera, floor, car, ethos,blood,cARM, envMap,clock,animationMixers;
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
@@ -95,6 +95,10 @@ function onHitResult(hitResult) {
     document.getElementById("transform-controls").style.display = "block";
     blood.position.copy(hitResult.position);
   }
+  if (cARM && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    cARM.position.copy(hitResult.position);
+  }
 }
 
 function placeCar() {
@@ -115,6 +119,10 @@ function scaleBlood(value) {
   blood.scale.set(value, value, value);
 }
 
+function scalecARM(value) {
+  cARM.scale.set(value, value, value);
+}
+
 function rotateCar(value) {
   car.rotation.y = value;
 }
@@ -124,7 +132,11 @@ function rotateEthos(value) {
 }
 
 function rotateBlood(value) {
-  ethos.rotation.y = value;
+  blood.rotation.y = value;
+}
+
+function rotatecARM(value) {
+  cARM.rotation.y = value;
 }
 
 function changemodel(value) {
@@ -277,7 +289,44 @@ function loadGLB(filename){
     });
   });
   gltfLoader.load("C_ARM.glb", (gltf) => {
-    scene.add( gltf.scene);
+    cARM = gltf.scene;
+    const animations = gltf.animations;
+    cARM.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    cARM.scale.set(0.1, 0.1, 0.1);
+    scene.add(cARM);
+    const mixer = new THREE.AnimationMixer(cARM);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scalecARM(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotatecARM((rotationSlider.value * Math.PI) / 180);
+    });
   });
   gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
     scene.add( gltf.scene);
