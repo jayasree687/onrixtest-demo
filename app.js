@@ -100,7 +100,7 @@ function rotateCar(value) {
   car.rotation.y = value;
 }
 
-function changeCarColor(value) {
+function changemodel(value) {
   car.traverse((child) => {
     if (child.material && child.material.name === "CarPaint") {
       child.material.color.setHex(value);
@@ -166,7 +166,7 @@ OX.init(config)
       });
 
       document.getElementById("black").addEventListener("click", () => {
-        // changeCarColor(0x111111);
+         changemodel(range_rover.glb);
          scene.remove(car);
         const gltfLoader = new GLTFLoader();
         gltfLoader.load("ETHOSs.glb", (gltf) => {
