@@ -126,6 +126,7 @@ OX.init(config)
     // Load car model
     const gltfLoader = new GLTFLoader();
     gltfLoader.load("bloodsny.glb", (gltf) => {
+      const model = gltf.scene;
       car = gltf.scene;
       const animations = gltf.animations;
       car.traverse((child) => {
@@ -170,6 +171,7 @@ OX.init(config)
          scene.remove(car);
         const gltfLoader = new GLTFLoader();
         gltfLoader.load("ETHOSs.glb", (gltf) => {
+          const model = gltf.scene;
           car = gltf.scene;
           car.traverse((child) => {
             if (child.material) {
