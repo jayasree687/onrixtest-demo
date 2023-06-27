@@ -163,6 +163,18 @@ function loadGLB(filename){
       rotateCar((rotationSlider.value * Math.PI) / 180);
     });
   });
+  gltfLoader.load("ETHOSs.glb", (gltf) => {
+    scene.add( gltf.scene);
+  });
+  gltfLoader.load("bloodsny.glb", (gltf) => {
+    scene.add( gltf.scene);
+  });
+  gltfLoader.load("C_ARM.glb", (gltf) => {
+    scene.add( gltf.scene);
+  });
+  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+    scene.add( gltf.scene);
+  })
   // Subscribe to events
   OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
     updatePose(pose);
