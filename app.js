@@ -125,7 +125,7 @@ OX.init(config)
 
     // Load car model
     const gltfLoader = new GLTFLoader();
-    gltfLoader.load("bloodsny.glb","range_rover.glb", (gltf) => {
+    gltfLoader.load("bloodsny.glb", (gltf) => {
       car = gltf.scene;
       const animations = gltf.animations;
       car.traverse((child) => {
