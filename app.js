@@ -376,8 +376,8 @@ OX.init(config)
      // changeCarColor(0xffffff);
     // loadGLB("bloodsny.glb");
       scene.remove(car);
-      const gltfLoader = new GLTFLoader();
-    gltfLoader.load("bloodsny.glb", (gltf) => {
+     // const gltfLoader = new GLTFLoader();
+    //gltfLoader.load("bloodsny.glb", (gltf) => {
         car = gltf.scene;
         const animations = gltf.animations;
        car.traverse((child) => {
