@@ -439,7 +439,7 @@ OX.init(config)
       });
    });
  // });
-  .catch((error) => {
+  catch((error) => {
     // An error ocurred, chech error type and display it
     document.getElementById("loading-screen").style.display = "none";
 
