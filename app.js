@@ -138,6 +138,9 @@ function rotateBlood(value) {
 function rotatecARM(value) {
   cARM.rotation.y = value;
 }
+function rotateVITAL(value) {
+  VI.rotation.y = value;
+}
 
 function changemodel(value) {
   car.traverse((child) => {
@@ -371,28 +374,28 @@ OX.init(config)
    document.getElementById("silver").addEventListener("click", () => {
      // changeCarColor(0xffffff);
      loadGLB("bloodsny.glb");
-    //  scene.remove(car);
-    //  const gltfLoader = new GLTFLoader();
-    //  gltfLoader.load("bloodsny.glb", (gltf) => {
-    //    car = gltf.scene;
-    //    const animations = gltf.animations;
-    //    car.traverse((child) => {
-    //      if (child.material) {
-    //        console.log("updating material");
-    //        child.material.envMap = envMap;
-    //        child.material.needsUpdate = true;
-    //      }
-    //    });
-    //    car.scale.set(0.5, 0.5, 0.5);
-    //    scene.add(car);
-    //    const mixer = new THREE.AnimationMixer(car);
-    //    const action = mixer.clipAction(animations[0]);
-    //    action.play();
-    //    setInterval(() => {
-    //      action.stop()
-    //    }, 60000);
-    //   animationMixers.push(mixer);
-    //  });
+      scene.remove(car);
+      const gltfLoader = new GLTFLoader();
+    gltfLoader.load("bloodsny.glb", (gltf) => {
+        car = gltf.scene;
+        const animations = gltf.animations;
+       car.traverse((child) => {
+          if (child.material) {
+            console.log("updating material");
+            child.material.envMap = envMap;
+            child.material.needsUpdate = true;
+          }
+        });
+        car.scale.set(0.5, 0.5, 0.5);
+        scene.add(car);
+        const mixer = new THREE.AnimationMixer(car);
+      const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+      });
    });
   
    document.getElementById("orange").addEventListener("click", () => {
