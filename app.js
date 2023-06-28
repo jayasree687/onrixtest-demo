@@ -368,7 +368,7 @@ OX.init(config)
     // Load car model
     loadGLB("VITAL SIGNS MONITOR.glb");
     document.getElementById("black").addEventListener("click", () => {
-      //changemodel(range_rover.glb);
+      changemodel(range_rover.glb);
     // loadGLB("ETHOSs.glb");
    });
   
@@ -438,7 +438,7 @@ OX.init(config)
         scene.add(car);
       });
    });
-  })
+  });
   .catch((error) => {
     // An error ocurred, chech error type and display it
     document.getElementById("loading-screen").style.display = "none";
