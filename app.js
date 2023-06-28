@@ -367,7 +367,7 @@ OX.init(config)
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
     // Load car model
-    loadGLB("VITAL SIGNS MONITOR.glb");
+    //loadGLB("VITAL SIGNS MONITOR.glb");
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
     // loadGLB("ETHOSs.glb");
