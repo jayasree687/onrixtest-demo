@@ -333,9 +333,9 @@ function loadGLB(filename){
       rotatecARM((rotationSlider.value * Math.PI) / 180);
     });
   });
-  //gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
-   // scene.add( gltf.scene);
-  //})
+  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+    scene.add( gltf.scene);
+  })
   // Subscribe to events
   OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
     updatePose(pose);
