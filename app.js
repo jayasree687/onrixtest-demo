@@ -438,7 +438,7 @@ OX.init(config)
         scene.add(car);
       });
    });
-  });
+ // });
   .catch((error) => {
     // An error ocurred, chech error type and display it
     document.getElementById("loading-screen").style.display = "none";
