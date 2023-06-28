@@ -405,20 +405,20 @@ OX.init(config)
      setupRenderer(rendererCanvas);
     // loadGLB("C_ARM.glb");
       scene.remove(car);
-    const gltfLoader = new GLTFLoader();
-      gltfLoader.load("C_ARM.glb", (gltf) => {
-        car = gltf.scene;
-        car.traverse((child) => {
-          if (child.material) {
-            console.log("updating material");
-            child.material.envMap = envMap;
-            child.material.needsUpdate = true;
-          }
-        });
-        car.scale.set(0.5, 0.5, 0.5);
+    //const gltfLoader = new GLTFLoader();
+      //gltfLoader.load("C_ARM.glb", (gltf) => {
+       // car = gltf.scene;
+        //car.traverse((child) => {
+         // if (child.material) {
+         //   console.log("updating material");
+         //   child.material.envMap = envMap;
+          //  child.material.needsUpdate = true;
+        //  }
+       // });
+      //  car.scale.set(0.5, 0.5, 0.5);
         scene.add(car);
         loadGLB("C_ARM.glb")
-      });
+    //  });
    });
   
    document.getElementById("blue").addEventListener("click", () => {
