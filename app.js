@@ -10,8 +10,7 @@ var renderer, scene, camera, floor, car, ethos,blood,cARM, envMap,clock,animatio
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
-  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
-  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
+  
   const width = rendererCanvas.width;
   const height = rendererCanvas.height;
 
@@ -109,6 +108,8 @@ function placeCar() {
 
 function scaleCar(value) {
   car.scale.set(value, value, value);
+  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
+  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 }
 
 function scaleEthos(value) {
@@ -420,20 +421,20 @@ OX.init(config)
   
    document.getElementById("blue").addEventListener("click", () => {
      // changeCarColor(0x0011ff);
-     loadGLB("VITAL SIGNS MONITOR.glb");
-    //  scene.remove(car);
-    //  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
-    //    car = gltf.scene;
-    //    car.traverse((child) => {
-    //      if (child.material) {
-    //        console.log("updating material");
-    //        child.material.envMap = envMap;
-    //        child.material.needsUpdate = true;
-    //      }
-    //    });
-    //    car.scale.set(0.5, 0.5, 0.5);
-    //    scene.add(car);
-    //  });
+     //loadGLB("VITAL SIGNS MONITOR.glb");
+      scene.remove(car);
+      gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+        car = gltf.scene;
+        car.traverse((child) => {
+          if (child.material) {
+            console.log("updating material");
+            child.material.envMap = envMap;
+            child.material.needsUpdate = true;
+          }
+        });
+        car.scale.set(0.5, 0.5, 0.5);
+        scene.add(car);
+      });
    });
   })
   .catch((error) => {
