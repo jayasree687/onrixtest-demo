@@ -11,7 +11,7 @@ var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
   const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
-	const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
+  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
   const width = rendererCanvas.width;
   const height = rendererCanvas.height;
 
@@ -218,7 +218,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ethos.scale.set(0.1, 0.1, 0.1);
+    ethos.scale.set(0.5, 0.5, 0.5);
     scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ethos);
         const action = mixer.clipAction(animations[0]);
@@ -258,7 +258,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    blood.scale.set(0.1, 0.1, 0.1);
+    blood.scale.set(0.5, 0.5, 0.5);
     scene.add(blood);
     const mixer = new THREE.AnimationMixer(blood);
         const action = mixer.clipAction(animations[0]);
@@ -362,7 +362,7 @@ OX.init(config)
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
     // Load car model
-    loadGLB("bloodsny.glb");
+    loadGLB("VITAL SIGNS MONITOR.glb");
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
      loadGLB("ETHOSs.glb");
