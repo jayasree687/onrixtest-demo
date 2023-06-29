@@ -231,7 +231,7 @@ function loadGLB(filename){
       }
     });
     ethos.scale.set(0.5, 0.5, 0.5);
-    scene.add(ethos);
+    // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ethos);
         const action = mixer.clipAction(animations[0]);
         action.play();
@@ -271,7 +271,7 @@ function loadGLB(filename){
       }
     });
     blood.scale.set(0.5, 0.5, 0.5);
-    scene.add(blood);
+    // scene.add(blood);
     const mixer = new THREE.AnimationMixer(blood);
         const action = mixer.clipAction(animations[0]);
         action.play();
@@ -311,7 +311,7 @@ function loadGLB(filename){
       }
     });
     cARM.scale.set(0.5, 0.5, 0.5);
-    scene.add(cARM);
+    // scene.add(cARM);
     const mixer = new THREE.AnimationMixer(cARM);
         const action = mixer.clipAction(animations[0]);
         action.play();
@@ -351,7 +351,7 @@ function loadGLB(filename){
       }
     });
     vital.scale.set(0.5, 0.5, 0.5);
-    scene.add(vital);
+    // scene.add(vital);
     const mixer = new THREE.AnimationMixer(vital);
         const action = mixer.clipAction(animations[0]);
         action.play();
@@ -411,56 +411,34 @@ OX.init(config)
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
     // Load car model
-    loadGLB("bloodsny.gnb");
+    loadGLB("range_rover.gnb");
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
+     scene.add(blood);
      scene.remove(ethos);
-     scene.remove(blood);
      scene.remove(vital);
      scene.remove(cARM);
    });
   
    document.getElementById("silver").addEventListener("click", () => {
-     // changeCarColor(0xffffff);
     scene.add(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+    scene.remove(cARM);
    });
   
    document.getElementById("orange").addEventListener("click", () => {
-     // changeCarColor(0xff2600);
-     setupRenderer(rendererCanvas);
-     loadGLB("C_ARM.glb");
-    //  scene.remove(car);
-    //  const gltfLoader = new GLTFLoader();
-    //  gltfLoader.load("C_ARM.glb", (gltf) => {
-    //    car = gltf.scene;
-    //    car.traverse((child) => {
-    //      if (child.material) {
-    //        console.log("updating material");
-    //        child.material.envMap = envMap;
-    //        child.material.needsUpdate = true;
-    //      }
-    //    });
-    //    car.scale.set(0.5, 0.5, 0.5);
-    //    scene.add(car);
-    //  });
+    scene.add(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
    });
   
    document.getElementById("blue").addEventListener("click", () => {
-     // changeCarColor(0x0011ff);
-     loadGLB("VITAL SIGNS MONITOR.glb");
-    //  scene.remove(car);
-    //  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
-    //    car = gltf.scene;
-    //    car.traverse((child) => {
-    //      if (child.material) {
-    //        console.log("updating material");
-    //        child.material.envMap = envMap;
-    //        child.material.needsUpdate = true;
-    //      }
-    //    });
-    //    car.scale.set(0.5, 0.5, 0.5);
-    //    scene.add(car);
-    //  });
+    scene.add(vital);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
    });
   })
   .catch((error) => {
