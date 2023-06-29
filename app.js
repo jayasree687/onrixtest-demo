@@ -411,7 +411,7 @@ OX.init(config)
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
     // Load car model
-    loadGLB("range_rover.gnb");
+    loadGLB("range_rover.glb");
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
      scene.add(blood);
