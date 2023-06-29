@@ -414,7 +414,7 @@ OX.init(config)
     loadGLB("bloodsny.gnb");
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
-     loadGLB("ETHOSs.glb");
+     scene.remove(ethos);
    });
   
    document.getElementById("silver").addEventListener("click", () => {
@@ -515,4 +515,3 @@ OX.init(config)
   });
 
   
- 
