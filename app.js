@@ -412,7 +412,7 @@ OX.init(config)
     setupRenderer(rendererCanvas);
     // Load car model
     loadGLB("range_rover.glb");
-    document.getElementById("black").Icon icon = new ImageIcon("home.PNG").addEventListener("click", () => {
+    document.getElementById("black").Icon = new ImageIcon("home.PNG").addEventListener("click", () => {
       document.getElementById("audio").play()
       //changemodel(range_rover.glb);
      scene.add(blood);
