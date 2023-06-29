@@ -172,7 +172,7 @@ function changeEthos(value) {
 // ====== Onirix SDK ======
 
 const OX = new OnirixSDK(
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwNDkxLCJyb2xlIjoxLCJpYXQiOjE2ODc4NjU2MjN9.2DAtyqXlB2z3VpeLexZgSMUgR8o6YSVFemSGnOMLOMc"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUyMDIsInByb2plY3RJZCI6MTQ0MjgsInJvbGUiOjMsImlhdCI6MTYxNjc1ODY5NX0.8F5eAPcBGaHzSSLuQAEgpdja9aEZ6Ca_Ll9wg84Rp5k"
 );
 
 const config = {
