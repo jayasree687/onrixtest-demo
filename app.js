@@ -415,6 +415,7 @@ OX.init(config)
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
      scene.add(blood);
+     scene.remove(car);
      scene.remove(ethos);
      scene.remove(vital);
      scene.remove(cARM);
@@ -422,6 +423,7 @@ OX.init(config)
   
    document.getElementById("silver").addEventListener("click", () => {
     scene.add(ethos);
+    scene.remove(car);
     scene.remove(blood);
     scene.remove(vital);
     scene.remove(cARM);
@@ -429,6 +431,7 @@ OX.init(config)
   
    document.getElementById("orange").addEventListener("click", () => {
     scene.add(cARM);
+    scene.remove(car);
     scene.remove(ethos);
     scene.remove(blood);
     scene.remove(vital);
@@ -436,6 +439,7 @@ OX.init(config)
   
    document.getElementById("blue").addEventListener("click", () => {
     scene.add(vital);
+    scene.remove(car);
     scene.remove(cARM);
     scene.remove(ethos);
     scene.remove(blood);
