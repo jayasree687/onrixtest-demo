@@ -413,6 +413,7 @@ OX.init(config)
     // Load car model
     loadGLB("range_rover.glb");
     document.getElementById("black").addEventListener("click", () => {
+      document.getElementById("audio").play()
       //changemodel(range_rover.glb);
      scene.add(blood);
      scene.remove(car);
@@ -422,6 +423,7 @@ OX.init(config)
    });
   
    document.getElementById("silver").addEventListener("click", () => {
+     document.getElementById("audio").play()
     scene.add(ethos);
     scene.remove(car);
     scene.remove(blood);
@@ -430,6 +432,7 @@ OX.init(config)
    });
   
    document.getElementById("orange").addEventListener("click", () => {
+     document.getElementById("audio").play()
     scene.add(cARM);
     scene.remove(car);
     scene.remove(ethos);
@@ -438,6 +441,7 @@ OX.init(config)
    });
   
    document.getElementById("blue").addEventListener("click", () => {
+     document.getElementById("audio").play()
     scene.add(vital);
     scene.remove(car);
     scene.remove(cARM);
