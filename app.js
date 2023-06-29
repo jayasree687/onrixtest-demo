@@ -684,8 +684,7 @@ class OrbitControls extends EventDispatcher {
 
 				}
 
-				// restrict theta to be between desired limits
-
+				
 				let min = scope.minAzimuthAngle;
 				let max = scope.maxAzimuthAngle;
 
