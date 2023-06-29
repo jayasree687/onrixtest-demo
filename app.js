@@ -10,7 +10,8 @@ var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, envMap,clock,an
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
-  
+  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
+  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
   const width = rendererCanvas.width;
   const height = rendererCanvas.height;
 
@@ -74,8 +75,6 @@ function onResize() {
   camera.aspect = cameraParams.aspect;
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
-  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
-  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 }
 
 function render() {
@@ -413,8 +412,7 @@ OX.init(config)
     setupRenderer(rendererCanvas);
     // Load car model
     loadGLB("range_rover.glb");
-    document.getElementById("black").addEventListener("click", () => {
-      document.getElementById("audio").play()
+    document.getElementById("black1").addEventListener("click", () => {
       //changemodel(range_rover.glb);
      scene.add(blood);
      scene.remove(car);
@@ -424,7 +422,6 @@ OX.init(config)
    });
   
    document.getElementById("silver").addEventListener("click", () => {
-     document.getElementById("audio").play()
     scene.add(ethos);
     scene.remove(car);
     scene.remove(blood);
@@ -433,7 +430,6 @@ OX.init(config)
    });
   
    document.getElementById("orange").addEventListener("click", () => {
-     document.getElementById("audio").play()
     scene.add(cARM);
     scene.remove(car);
     scene.remove(ethos);
@@ -442,7 +438,6 @@ OX.init(config)
    });
   
    document.getElementById("blue").addEventListener("click", () => {
-     document.getElementById("audio").play()
     scene.add(vital);
     scene.remove(car);
     scene.remove(cARM);
