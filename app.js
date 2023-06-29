@@ -10,7 +10,8 @@ var renderer, scene, camera, floor, car, ethos,blood,cARM, envMap,clock,animatio
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
-  
+  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
+  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
   const width = rendererCanvas.width;
   const height = rendererCanvas.height;
 
@@ -108,8 +109,6 @@ function placeCar() {
 
 function scaleCar(value) {
   car.scale.set(value, value, value);
-  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
-  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 }
 
 function scaleEthos(value) {
@@ -332,9 +331,9 @@ function loadGLB(filename){
       rotatecARM((rotationSlider.value * Math.PI) / 180);
     });
   });
-  // gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
-   // scene.add( gltf.scene);
-  // })
+  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+    scene.add( gltf.scene);
+  })
   // Subscribe to events
   OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
     updatePose(pose);
@@ -368,16 +367,16 @@ OX.init(config)
     // Load car model
     loadGLB("VITAL SIGNS MONITOR.glb");
     document.getElementById("black").addEventListener("click", () => {
-      changemodel(range_rover.glb);
-    // loadGLB("ETHOSs.glb");
+      //changemodel(range_rover.glb);
+     loadGLB("ETHOSs.glb");
    });
   
    document.getElementById("silver").addEventListener("click", () => {
      // changeCarColor(0xffffff);
-    // loadGLB("bloodsny.glb");
+     loadGLB("bloodsny.glb");
       scene.remove(car);
-     // const gltfLoader = new GLTFLoader();
-    //gltfLoader.load("bloodsny.glb", (gltf) => {
+      const gltfLoader = new GLTFLoader();
+    gltfLoader.load("bloodsny.glb", (gltf) => {
         car = gltf.scene;
         const animations = gltf.animations;
        car.traverse((child) => {
@@ -389,8 +388,7 @@ OX.init(config)
         });
         car.scale.set(0.5, 0.5, 0.5);
         scene.add(car);
-        loadGLB("bloodsny.glb");
-      const mixer = new THREE.AnimationMixer(car);
+        const mixer = new THREE.AnimationMixer(car);
       const action = mixer.clipAction(animations[0]);
         action.play();
         setInterval(() => {
@@ -403,43 +401,42 @@ OX.init(config)
    document.getElementById("orange").addEventListener("click", () => {
      // changeCarColor(0xff2600);
      setupRenderer(rendererCanvas);
-    // loadGLB("C_ARM.glb");
-      scene.remove(car);
-    //const gltfLoader = new GLTFLoader();
-      //gltfLoader.load("C_ARM.glb", (gltf) => {
-       // car = gltf.scene;
-        //car.traverse((child) => {
-         // if (child.material) {
-         //   console.log("updating material");
-         //   child.material.envMap = envMap;
-          //  child.material.needsUpdate = true;
-        //  }
-       // });
-      //  car.scale.set(0.5, 0.5, 0.5);
-        scene.add(car);
-        loadGLB("C_ARM.glb")
+     loadGLB("C_ARM.glb");
+    //  scene.remove(car);
+    //  const gltfLoader = new GLTFLoader();
+    //  gltfLoader.load("C_ARM.glb", (gltf) => {
+    //    car = gltf.scene;
+    //    car.traverse((child) => {
+    //      if (child.material) {
+    //        console.log("updating material");
+    //        child.material.envMap = envMap;
+    //        child.material.needsUpdate = true;
+    //      }
+    //    });
+    //    car.scale.set(0.5, 0.5, 0.5);
+    //    scene.add(car);
     //  });
    });
   
    document.getElementById("blue").addEventListener("click", () => {
      // changeCarColor(0x0011ff);
-     //loadGLB("VITAL SIGNS MONITOR.glb");
-      scene.remove(car);
-      gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
-        car = gltf.scene;
-        car.traverse((child) => {
-          if (child.material) {
-            console.log("updating material");
-            child.material.envMap = envMap;
-            child.material.needsUpdate = true;
-          }
-        });
-        car.scale.set(0.5, 0.5, 0.5);
-        scene.add(car);
-      });
+     loadGLB("VITAL SIGNS MONITOR.glb");
+    //  scene.remove(car);
+    //  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+    //    car = gltf.scene;
+    //    car.traverse((child) => {
+    //      if (child.material) {
+    //        console.log("updating material");
+    //        child.material.envMap = envMap;
+    //        child.material.needsUpdate = true;
+    //      }
+    //    });
+    //    car.scale.set(0.5, 0.5, 0.5);
+    //    scene.add(car);
+    //  });
    });
-  
-  catch((error) => {
+  })
+  .catch((error) => {
     // An error ocurred, chech error type and display it
     document.getElementById("loading-screen").style.display = "none";
 
