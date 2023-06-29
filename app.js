@@ -6,7 +6,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/l
 
 // ====== ThreeJS ======
 
-var renderer, scene, camera, floor, car, ethos,blood,cARM, envMap,clock,animationMixers;
+var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, envMap,clock,animationMixers;
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
@@ -99,6 +99,11 @@ function onHitResult(hitResult) {
     document.getElementById("transform-controls").style.display = "block";
     cARM.position.copy(hitResult.position);
   }
+  if (vital && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    vital.position.copy(hitResult.position);
+  }
+  
 }
 
 function placeCar() {
@@ -122,6 +127,10 @@ function scaleBlood(value) {
 function scalecARM(value) {
   cARM.scale.set(value, value, value);
 }
+function scalevital(value) {
+  vital.scale.set(value, value, value);
+}
+
 
 function rotateCar(value) {
   car.rotation.y = value;
@@ -138,8 +147,8 @@ function rotateBlood(value) {
 function rotatecARM(value) {
   cARM.rotation.y = value;
 }
-function rotateVITAL(value) {
-  VI.rotation.y = value;
+function rotatevital(value) {
+  vital.rotation.y = value;
 }
 
 function changemodel(value) {
@@ -332,7 +341,44 @@ function loadGLB(filename){
     });
   });
   gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
-    scene.add( gltf.scene);
+    vital = gltf.scene;
+    const animations = gltf.animations;
+    vital.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    vital.scale.set(0.5, 0.5, 0.5);
+    scene.add(vital);
+    const mixer = new THREE.AnimationMixer(vital);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scalevital(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotatevital((rotationSlider.value * Math.PI) / 180);
+    });
   })
   // Subscribe to events
   OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
@@ -365,7 +411,7 @@ OX.init(config)
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
     // Load car model
-    loadGLB("VITAL SIGNS MONITOR.glb");
+    loadGLB("bloodsny.gnb");
     document.getElementById("black").addEventListener("click", () => {
       //changemodel(range_rover.glb);
      loadGLB("ETHOSs.glb");
@@ -469,3 +515,4 @@ OX.init(config)
   });
 
   
+ 
