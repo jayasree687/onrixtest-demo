@@ -1,5 +1,5 @@
 // ====== Imports ======
-import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
+//import * as THREE from 'https://unpkg.com/three@0.126.1/build/three.module.js';
 
 
 import OnirixSDK from "https://unpkg.com/@onirix/ar-engine-sdk@1.3.1/dist/ox-sdk.esm.js";
