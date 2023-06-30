@@ -17,6 +17,8 @@ function setupRenderer(rendererCanvas) {
   
   const width = rendererCanvas.width;
   const height = rendererCanvas.height;
+  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
+  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 
   // Initialize renderer with rendererCanvas provided by Onirix SDK
   renderer = new THREE.WebGLRenderer({ canvas: rendererCanvas, alpha: true });
