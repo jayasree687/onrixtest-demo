@@ -10,7 +10,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/l
 
 // ====== ThreeJS ======
 
-var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, envMap,clock,animationMixers;
+var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, one, envMap,clock,animationMixers;
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
@@ -107,7 +107,11 @@ function onHitResult(hitResult) {
   if (vital && !isCarPlaced) {
     document.getElementById("transform-controls").style.display = "block";
     vital.position.copy(hitResult.position);
+  } if (one && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    one.position.copy(hitResult.position);
   }
+
   
 }
 
@@ -348,6 +352,38 @@ function loadGLB(filename){
     });
   });
   gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+    one = gltf.scene;
+    const animations = gltf.animations;
+    one.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    one.scale.set(0.5, 0.5, 0.5);
+    // scene.add(vital);
+    const mixer = new THREE.AnimationMixer(one);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+  });
+
+  gltfLoader.load("Example.glb", (gltf) => {
     vital = gltf.scene;
     const animations = gltf.animations;
     vital.traverse((child) => {
@@ -377,16 +413,8 @@ function loadGLB(filename){
       document.getElementById("transform-controls").style.display = "none";
       document.getElementById("color-controls").style.display = "block";
     });
-
-    const scaleSlider = document.getElementById("scale-slider");
-    scaleSlider.addEventListener("input", () => {
-      scalevital(scaleSlider.value / 100);
-    });
-    const rotationSlider = document.getElementById("rotation-slider");
-    rotationSlider.addEventListener("input", () => {
-      rotatevital((rotationSlider.value * Math.PI) / 180);
-    });
-  })
+  });
+  
   // Subscribe to events
   OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
     updatePose(pose);
@@ -419,20 +447,21 @@ OX.init(config)
     setupRenderer(rendererCanvas);
     // Load car model
     loadGLB("range_rover.glb");
-    document.getElementById("black1").addEventListener("click", () => {
+    document.getElementById("one").addEventListener("click", () => {
       //changemodel(range_rover.glb);
-    document.getElementById("blue").style.display = "block";
-    document.getElementById("orange").style.display = "block";
-    document.getElementById("black1").style.display = "none";
-    document.getElementById("silver").style.display = "none";
+    document.getElementById("one").style.display = "none";
+    document.getElementById("two").style.display = "none";  
+    document.getElementById("nine").style.display = "block";
+    document.getElementById("ten").style.display = "block";
      scene.add(blood);
      scene.remove(car);
      scene.remove(ethos);
      scene.remove(vital);
      scene.remove(cARM);
+     scene.remove(one);
    });
   
-   document.getElementById("silver").addEventListener("click", () => {
+   document.getElementById("two").addEventListener("click", () => {
     scene.add(ethos);
     scene.remove(car);
     scene.remove(blood);
@@ -440,7 +469,7 @@ OX.init(config)
     scene.remove(cARM);
    });
   
-   document.getElementById("orange").addEventListener("click", () => {
+   document.getElementById("three").addEventListener("click", () => {
     scene.add(cARM);
     scene.remove(car);
     scene.remove(ethos);
@@ -448,7 +477,7 @@ OX.init(config)
     scene.remove(vital);
    });
   
-   document.getElementById("blue").addEventListener("click", () => {
+   document.getElementById("four").addEventListener("click", () => {
     scene.add(vital);
     scene.remove(car);
     scene.remove(cARM);
