@@ -158,6 +158,25 @@ function scalecARM(value) {
 function scalevital(value) {
   vital.scale.set(value, value, value);
 }
+function scaleone(value) {
+  one.scale.set(value, value, value);
+}
+function scaleseven(value) {
+  seven.scale.set(value, value, value);
+}
+function scaleeight(value) {
+  eight.scale.set(value, value, value);
+}
+function scalenine(value) {
+  nine.scale.set(value, value, value);
+}
+function scaleten(value) {
+  ten.scale.set(value, value, value);
+}
+function scaleeleven(value) {
+  eleven.scale.set(value, value, value);
+}
+
 
 
 function rotateCar(value) {
@@ -178,22 +197,22 @@ function rotatecARM(value) {
 function rotatevital(value) {
   vital.rotation.y = value;
 }
-function rotatevital(value) {
+function rotateone(value) {
   one.rotation.y = value;
 }
-function rotatevital(value) {
+function rotateseven(value) {
   seven.rotation.y = value;
 }
-function rotatevital(value) {
+function rotateeight(value) {
   eight.rotation.y = value;
 }
-function rotatevital(value) {
+function rotatenine(value) {
   nine.rotation.y = value;
 }
-function rotatevital(value) {
+function rotateten(value) {
   ten.rotation.y = value;
 }
-function rotatevital(value) {
+function rotateeleven(value) {
   eleven.rotation.y = value;
 }
 function changemodel(value) {
@@ -448,7 +467,8 @@ function loadGLB(filename){
       document.getElementById("color-controls").style.display = "block";
     });
   });
-gltfLoader.load("7.glb", (gltf) => {
+	
+ gltfLoader.load("7.glb", (gltf) => {
     seven = gltf.scene;
     const animations = gltf.animations;
     seven.traverse((child) => {
@@ -488,7 +508,8 @@ gltfLoader.load("7.glb", (gltf) => {
       rotateEthos((rotationSlider.value * Math.PI) / 180);
     });
   });
-gltfLoader.load("8.glb", (gltf) => {
+	
+ gltfLoader.load("8.glb", (gltf) => {
     eight = gltf.scene;
     const animations = gltf.animations;
     eight.traverse((child) => {
@@ -528,7 +549,8 @@ gltfLoader.load("8.glb", (gltf) => {
       rotateEthos((rotationSlider.value * Math.PI) / 180);
     });
   });
-gltfLoader.load("9.glb", (gltf) => {
+	
+  gltfLoader.load("9.glb", (gltf) => {
     nine = gltf.scene;
     const animations = gltf.animations;
     nine.traverse((child) => {
@@ -568,7 +590,8 @@ gltfLoader.load("9.glb", (gltf) => {
       rotateEthos((rotationSlider.value * Math.PI) / 180);
     });
   });
-gltfLoader.load("10.glb", (gltf) => {
+	
+ gltfLoader.load("10.glb", (gltf) => {
     ten = gltf.scene;
     const animations = gltf.animations;
     ten.traverse((child) => {
@@ -608,6 +631,7 @@ gltfLoader.load("10.glb", (gltf) => {
       rotateEthos((rotationSlider.value * Math.PI) / 180);
     });
   });
+	
   gltfLoader.load("11.glb", (gltf) => {
     eleven = gltf.scene;
     const animations = gltf.animations;
