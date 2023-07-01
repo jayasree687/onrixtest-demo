@@ -254,7 +254,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    car.scale.set(1, 1, 1);
+    car.scale.set(.5, .5, .5);
     scene.add(car);
     const mixer = new THREE.AnimationMixer(car);
         const action = mixer.clipAction(animations[0]);
@@ -294,7 +294,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ethos.scale.set(1, 1, 1);
+    ethos.scale.set(.5, .5, .5);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ethos);
         const action = mixer.clipAction(animations[0]);
@@ -334,7 +334,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    blood.scale.set(1, 1, 1);
+    blood.scale.set(.5, .5, .5);
     // scene.add(blood);
     const mixer = new THREE.AnimationMixer(blood);
         const action = mixer.clipAction(animations[0]);
@@ -374,7 +374,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    cARM.scale.set(1, 1, 1);
+    cARM.scale.set(.5, .5, .5);
     // scene.add(cARM);
     const mixer = new THREE.AnimationMixer(cARM);
         const action = mixer.clipAction(animations[0]);
@@ -414,7 +414,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    one.scale.set(1, 1, 1);
+    one.scale.set(.5, .5, .5);
     // scene.add(vital);
     const mixer = new THREE.AnimationMixer(one);
         const action = mixer.clipAction(animations[0]);
@@ -446,7 +446,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    vital.scale.set(1, 1, 1);
+    vital.scale.set(.5, .5, .5);
     // scene.add(vital);
     const mixer = new THREE.AnimationMixer(vital);
         const action = mixer.clipAction(animations[0]);
@@ -478,7 +478,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    seven.scale.set(1, 1, 1);
+    seven.scale.set(.5, .5, .5);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(seven);
         const action = mixer.clipAction(animations[0]);
@@ -519,7 +519,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    eight.scale.set(1, 1, 1);
+    eight.scale.set(.5, .5, .5);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(eight);
         const action = mixer.clipAction(animations[0]);
@@ -560,7 +560,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    nine.scale.set(1, 1, 1);
+    nine.scale.set(.5, .5, .5);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(nine);
         const action = mixer.clipAction(animations[0]);
@@ -601,7 +601,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ten.scale.set(1, 1, 1);
+    ten.scale.set(.5, .5, .5);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ten);
         const action = mixer.clipAction(animations[0]);
@@ -642,7 +642,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    eleven.scale.set(1, 1, 1);
+    eleven.scale.set(.5, .5, .5);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ten);
         const action = mixer.clipAction(animations[0]);
