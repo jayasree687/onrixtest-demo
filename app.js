@@ -30,7 +30,7 @@ function setupRenderer(rendererCanvas) {
   const cameraParams = OX.getCameraParameters();
   camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, 0.1, 1000);
   camera.matrixAutoUpdate = false;
-  orbitControls = new THREE.OrbitControls(camera);
+  
 	
 
   // Create an empty scene
