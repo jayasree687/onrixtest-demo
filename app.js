@@ -122,8 +122,7 @@ function placeCar() {
 
 
 function scaleCar(value) {
-  const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
-  const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
+  
   car.scale.set(value, value, value);
 }
 
@@ -231,7 +230,7 @@ function loadGLB(filename){
       rotateCar((rotationSlider.value * Math.PI) / 180);
     });
   });
-  gltfLoader.load("ETHOSs.glb", (gltf) => {
+  gltfLoader.load("2.glb", (gltf) => {
     ethos = gltf.scene;
     const animations = gltf.animations;
     ethos.traverse((child) => {
@@ -271,7 +270,7 @@ function loadGLB(filename){
       rotateEthos((rotationSlider.value * Math.PI) / 180);
     });
   });
-  gltfLoader.load("bloodsny.glb", (gltf) => {
+  gltfLoader.load("3.glb", (gltf) => {
     blood = gltf.scene;
     const animations = gltf.animations;
     blood.traverse((child) => {
@@ -311,7 +310,7 @@ function loadGLB(filename){
       rotateBlood((rotationSlider.value * Math.PI) / 180);
     });
   });
-  gltfLoader.load("C_ARM.glb", (gltf) => {
+  gltfLoader.load("4.glb", (gltf) => {
     cARM = gltf.scene;
     const animations = gltf.animations;
     cARM.traverse((child) => {
@@ -351,7 +350,7 @@ function loadGLB(filename){
       rotatecARM((rotationSlider.value * Math.PI) / 180);
     });
   });
-  gltfLoader.load("VITAL SIGNS MONITOR.glb", (gltf) => {
+  gltfLoader.load("5.glb", (gltf) => {
     one = gltf.scene;
     const animations = gltf.animations;
     one.traverse((child) => {
@@ -383,7 +382,7 @@ function loadGLB(filename){
     });
   });
 
-  gltfLoader.load("Example.glb", (gltf) => {
+  gltfLoader.load("6.glb", (gltf) => {
     vital = gltf.scene;
     const animations = gltf.animations;
     vital.traverse((child) => {
@@ -446,7 +445,7 @@ OX.init(config)
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
     // Load car model
-    loadGLB("range_rover.glb");
+    loadGLB("1.glb");
     document.getElementById("one").addEventListener("click", () => {
       //changemodel(range_rover.glb);
     // document.getElementById("one").style.display = "none";
