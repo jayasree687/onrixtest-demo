@@ -113,23 +113,23 @@ function onHitResult(hitResult) {
   }
     if (seven && !isCarPlaced) {
     document.getElementById("transform-controls").style.display = "block";
-    one.position.copy(hitResult.position);
+    seven.position.copy(hitResult.position);
   }
     if (eight && !isCarPlaced) {
     document.getElementById("transform-controls").style.display = "block";
-    one.position.copy(hitResult.position);
+    eight.position.copy(hitResult.position);
   }
     if (nine && !isCarPlaced) {
     document.getElementById("transform-controls").style.display = "block";
-    one.position.copy(hitResult.position);
+    nine.position.copy(hitResult.position);
   }
     if (ten && !isCarPlaced) {
     document.getElementById("transform-controls").style.display = "block";
-    one.position.copy(hitResult.position);
+    ten.position.copy(hitResult.position);
   }
   if (eleven && !isCarPlaced) {
     document.getElementById("transform-controls").style.display = "block";
-    one.position.copy(hitResult.position);
+    eleven.position.copy(hitResult.position);
   }
 }
 
