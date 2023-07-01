@@ -10,7 +10,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/l
 
 // ====== ThreeJS ======
 
-var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, one, envMap,clock,animationMixers;
+var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, one,seven,eight,nine,ten,eleven, envMap,clock,animationMixers;
 var isCarPlaced = false;
 var isEthosPlaced= false;
 function setupRenderer(rendererCanvas) {
@@ -111,7 +111,22 @@ function onHitResult(hitResult) {
     document.getElementById("transform-controls").style.display = "block";
     one.position.copy(hitResult.position);
   }
-
+    if (seven && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    one.position.copy(hitResult.position);
+  }
+    if (eight && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    one.position.copy(hitResult.position);
+  }
+    if (nine && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    one.position.copy(hitResult.position);
+  }
+    if (ten && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    one.position.copy(hitResult.position);
+  }
   
 }
 
@@ -160,7 +175,21 @@ function rotatecARM(value) {
 function rotatevital(value) {
   vital.rotation.y = value;
 }
-
+function rotatevital(value) {
+  one.rotation.y = value;
+}
+function rotatevital(value) {
+  seven.rotation.y = value;
+}
+function rotatevital(value) {
+  eight.rotation.y = value;
+}
+function rotatevital(value) {
+  nine.rotation.y = value;
+}
+function rotatevital(value) {
+  ten.rotation.y = value;
+}
 function changemodel(value) {
   car.traverse((child) => {
     if (child.material && child.material.name === "CarPaint") {
@@ -413,6 +442,206 @@ function loadGLB(filename){
       document.getElementById("color-controls").style.display = "block";
     });
   });
+gltfLoader.load("7.glb", (gltf) => {
+    seven = gltf.scene;
+    const animations = gltf.animations;
+    seven.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    seven.scale.set(0.5, 0.5, 0.5);
+    // scene.add(ethos);
+    const mixer = new THREE.AnimationMixer(seven);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scaleEthos(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotateEthos((rotationSlider.value * Math.PI) / 180);
+    });
+  });
+gltfLoader.load("8.glb", (gltf) => {
+    eight = gltf.scene;
+    const animations = gltf.animations;
+    eight.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    eight.scale.set(0.5, 0.5, 0.5);
+    // scene.add(ethos);
+    const mixer = new THREE.AnimationMixer(eight);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scaleEthos(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotateEthos((rotationSlider.value * Math.PI) / 180);
+    });
+  });
+gltfLoader.load("9.glb", (gltf) => {
+    nine = gltf.scene;
+    const animations = gltf.animations;
+    nine.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    nine.scale.set(0.5, 0.5, 0.5);
+    // scene.add(ethos);
+    const mixer = new THREE.AnimationMixer(nine);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scaleEthos(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotateEthos((rotationSlider.value * Math.PI) / 180);
+    });
+  });
+gltfLoader.load("10.glb", (gltf) => {
+    ten = gltf.scene;
+    const animations = gltf.animations;
+    ten.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    ten.scale.set(0.5, 0.5, 0.5);
+    // scene.add(ethos);
+    const mixer = new THREE.AnimationMixer(ten);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scaleEthos(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotateEthos((rotationSlider.value * Math.PI) / 180);
+    });
+  });
+  gltfLoader.load("11.glb", (gltf) => {
+    eleven = gltf.scene;
+    const animations = gltf.animations;
+    eleven.traverse((child) => {
+      if (child.material) {
+        console.log("updating material");
+        child.material.envMap = envMap;
+        child.material.needsUpdate = true;
+      }
+    });
+    eleven.scale.set(0.5, 0.5, 0.5);
+    // scene.add(ethos);
+    const mixer = new THREE.AnimationMixer(ten);
+        const action = mixer.clipAction(animations[0]);
+        action.play();
+        setInterval(() => {
+          action.stop()
+        }, 60000);
+       animationMixers.push(mixer);
+
+    // All loaded, so hide loading screen
+    document.getElementById("loading-screen").style.display = "none";
+
+    document.getElementById("initializing").style.display = "block";
+
+    document.getElementById("tap-to-place").addEventListener("click", () => {
+      placeCar();
+      document.getElementById("transform-controls").style.display = "none";
+      document.getElementById("color-controls").style.display = "block";
+    });
+
+    const scaleSlider = document.getElementById("scale-slider");
+    scaleSlider.addEventListener("input", () => {
+      scaleEthos(scaleSlider.value / 100);
+    });
+    const rotationSlider = document.getElementById("rotation-slider");
+    rotationSlider.addEventListener("input", () => {
+      rotateEthos((rotationSlider.value * Math.PI) / 180);
+    });
+  });	
   
   // Subscribe to events
   OX.subscribe(OnirixSDK.Events.OnPose, function (pose) {
@@ -447,47 +676,190 @@ OX.init(config)
     // Load car model
     loadGLB("1.glb");
     document.getElementById("one").addEventListener("click", () => {
-      //changemodel(range_rover.glb);
-    // document.getElementById("one").style.display = "none";
-    // document.getElementById("two").style.display = "none";  
-    // document.getElementById("nine").style.display = "block";
-    // document.getElementById("ten").style.display = "block";
+
     document.getElementById("one").style.setProperty('display','none');
     document.getElementById("two").style.setProperty('display','none');
-		document.getElementById("nine").style.setProperty('float','left');
+    document.getElementById("nine").style.setProperty('float','left');
     document.getElementById("nine").style.setProperty('display','inline');
     document.getElementById("ten").style.setProperty('display','inline');
-		document.getElementById("ten").style.setProperty('float','right');
+    document.getElementById("ten").style.setProperty('float','right');
      scene.add(blood);
      scene.remove(car);
      scene.remove(ethos);
      scene.remove(vital);
      scene.remove(cARM);
      scene.remove(one);
+     scene.remove(seven);
+     scene.remove(eight);	    
+     scene.remove(nine);
+     scene.remove(ten);	    
    });
   
    document.getElementById("two").addEventListener("click", () => {
+    document.getElementById("one").style.setProperty('display','none');
+    document.getElementById("two").style.setProperty('display','none');
+    document.getElementById("three").style.setProperty('float','left');
+    document.getElementById("three").style.setProperty('display','inline');
+    document.getElementById("four").style.setProperty('display','inline');
+    document.getElementById("four").style.setProperty('float','right');
     scene.add(ethos);
     scene.remove(car);
     scene.remove(blood);
     scene.remove(vital);
     scene.remove(cARM);
+     scene.remove(one);
+     scene.remove(seven);
+     scene.remove(eight);	    
+     scene.remove(nine);
+     scene.remove(ten);	
    });
   
-   document.getElementById("three").addEventListener("click", () => {
+    document.getElementById("three").addEventListener("click", () => {
+    document.getElementById("three").style.setProperty('display','none');
+    document.getElementById("four").style.setProperty('display','none');
+    document.getElementById("one").style.setProperty('float','left');
+    document.getElementById("one").style.setProperty('display','inline');
+    document.getElementById("two").style.setProperty('display','inline');
+    document.getElementById("two").style.setProperty('float','right');
     scene.add(cARM);
     scene.remove(car);
     scene.remove(ethos);
     scene.remove(blood);
     scene.remove(vital);
+     scene.remove(one);
+     scene.remove(seven);
+     scene.remove(eight);	    
+     scene.remove(nine);
+     scene.remove(ten);	
    });
   
    document.getElementById("four").addEventListener("click", () => {
+    document.getElementById("four").style.setProperty('display','none');
+    document.getElementById("three").style.setProperty('display','none');
+    document.getElementById("five").style.setProperty('float','left');
+    document.getElementById("five").style.setProperty('display','inline');
+    document.getElementById("six").style.setProperty('display','inline');
+    document.getElementById("six").style.setProperty('float','right');
     scene.add(vital);
     scene.remove(car);
     scene.remove(cARM);
     scene.remove(ethos);
     scene.remove(blood);
+    scene.remove(one);
+     scene.remove(seven);
+     scene.remove(eight);	    
+     scene.remove(nine);
+     scene.remove(ten);	
+   });
+    document.getElementById("five").addEventListener("click", () => {
+    document.getElementById("five").style.setProperty('display','none');
+    document.getElementById("six").style.setProperty('display','none');
+    document.getElementById("three").style.setProperty('float','left');
+    document.getElementById("three").style.setProperty('display','inline');
+    document.getElementById("four").style.setProperty('display','inline');
+    document.getElementById("four").style.setProperty('float','right');
+    scene.add(one);
+    scene.remove(car);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+     scene.remove(seven);
+     scene.remove(eight);	    
+     scene.remove(nine);
+     scene.remove(ten);	
+   });
+    document.getElementById("six").addEventListener("click", () => {
+    document.getElementById("six").style.setProperty('display','none');
+    document.getElementById("five").style.setProperty('display','none');
+    document.getElementById("seven").style.setProperty('float','left');
+    document.getElementById("seven").style.setProperty('display','inline');
+    document.getElementById("eight").style.setProperty('display','inline');
+    document.getElementById("eight").style.setProperty('float','right');
+	    
+    scene.add(seven);
+    scene.remove(car);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+     scene.remove(one);
+     scene.remove(eight);	    
+     scene.remove(nine);
+     scene.remove(ten);	
+   });
+    document.getElementById("seven").addEventListener("click", () => {
+    document.getElementById("seven").style.setProperty('display','none');
+    document.getElementById("eight").style.setProperty('display','none');
+    document.getElementById("five").style.setProperty('float','left');
+    document.getElementById("five").style.setProperty('display','inline');
+    document.getElementById("six").style.setProperty('display','inline');
+    document.getElementById("six").style.setProperty('float','right');
+    scene.add(eight);
+    scene.remove(car);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+     scene.remove(one);
+     scene.remove(seven);	    
+     scene.remove(nine);
+     scene.remove(ten);	
+   });
+   document.getElementById("eight").addEventListener("click", () => {
+    document.getElementById("eight").style.setProperty('display','none');
+    document.getElementById("seven").style.setProperty('display','none');
+    document.getElementById("nine").style.setProperty('float','left');
+    document.getElementById("nine").style.setProperty('display','inline');
+    document.getElementById("ten").style.setProperty('display','inline');
+    document.getElementById("ten").style.setProperty('float','right');
+	   
+    scene.add(nine);
+    scene.remove(car);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+     scene.remove(one);
+     scene.remove(eight);	    
+     scene.remove(seven);
+     scene.remove(ten);	
+   });
+   document.getElementById("nine").addEventListener("click", () => {
+    document.getElementById("nine").style.setProperty('display','none');
+    document.getElementById("ten").style.setProperty('display','none');
+    document.getElementById("seven").style.setProperty('float','left');
+    document.getElementById("seven").style.setProperty('display','inline');
+    document.getElementById("eight").style.setProperty('display','inline');
+    document.getElementById("eight").style.setProperty('float','right');
+    scene.add(ten);
+    scene.remove(car);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+     scene.remove(one);
+     scene.remove(eight);	    
+     scene.remove(seven);
+     scene.remove(eleven);	
+   });
+   document.getElementById("ten").addEventListener("click", () => {
+    document.getElementById("ten").style.setProperty('display','none');
+    document.getElementById("nine").style.setProperty('display','none');
+    document.getElementById("one").style.setProperty('float','left');
+    document.getElementById("one").style.setProperty('display','inline');
+    document.getElementById("two").style.setProperty('display','inline');
+    document.getElementById("two").style.setProperty('float','right');
+    scene.add(eleven);
+    scene.remove(car);
+    scene.remove(cARM);
+    scene.remove(ethos);
+    scene.remove(blood);
+    scene.remove(vital);
+     scene.remove(one);
+     scene.remove(eight);	    
+     scene.remove(seven);
+     scene.remove(ten);	
    });
   })
   .catch((error) => {
