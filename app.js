@@ -454,7 +454,7 @@ OX.init(config)
     // document.getElementById("nine").style.display = "block";
     // document.getElementById("ten").style.display = "block";
     document.getElementById("one").style.setProperty('display','none');
-    document.getElementById("one").style.setProperty('display','none');
+    document.getElementById("two").style.setProperty('display','none');
 		document.getElementById("nine").style.setProperty('float','left');
     document.getElementById("nine").style.setProperty('display','inline');
     document.getElementById("ten").style.setProperty('display','inline');
