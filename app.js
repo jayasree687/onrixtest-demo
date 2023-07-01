@@ -30,6 +30,8 @@ function setupRenderer(rendererCanvas) {
   const cameraParams = OX.getCameraParameters();
   camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, 0.1, 1000);
   camera.matrixAutoUpdate = false;
+  orbitControls = new THREE.OrbitControls(camera);
+	
 
   // Create an empty scene
   scene = new THREE.Scene();
@@ -254,7 +256,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    car.scale.set(.5, .5, .5);
+    car.scale.set(.7, .7, .7);
     scene.add(car);
     const mixer = new THREE.AnimationMixer(car);
         const action = mixer.clipAction(animations[0]);
@@ -294,7 +296,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ethos.scale.set(.5, .5, .5);
+    ethos.scale.set(.7, .7, .7);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ethos);
         const action = mixer.clipAction(animations[0]);
@@ -334,7 +336,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    blood.scale.set(.5, .5, .5);
+    blood.scale.set(.7, .7, .7);
     // scene.add(blood);
     const mixer = new THREE.AnimationMixer(blood);
         const action = mixer.clipAction(animations[0]);
@@ -374,7 +376,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    cARM.scale.set(.5, .5, .5);
+    cARM.scale.set(.7, .7, .7);
     // scene.add(cARM);
     const mixer = new THREE.AnimationMixer(cARM);
         const action = mixer.clipAction(animations[0]);
@@ -414,7 +416,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    one.scale.set(.5, .5, .5);
+    one.scale.set(.7, .7, .7);
     // scene.add(vital);
     const mixer = new THREE.AnimationMixer(one);
         const action = mixer.clipAction(animations[0]);
@@ -446,7 +448,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    vital.scale.set(.5, .5, .5);
+    vital.scale.set(.7, .7, .7);
     // scene.add(vital);
     const mixer = new THREE.AnimationMixer(vital);
         const action = mixer.clipAction(animations[0]);
@@ -478,7 +480,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    seven.scale.set(.5, .5, .5);
+    seven.scale.set(.7, .7, .7);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(seven);
         const action = mixer.clipAction(animations[0]);
@@ -519,7 +521,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    eight.scale.set(.5, .5, .5);
+    eight.scale.set(.7, .7, .7);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(eight);
         const action = mixer.clipAction(animations[0]);
@@ -560,7 +562,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    nine.scale.set(.5, .5, .5);
+    nine.scale.set(.7, .7, .7);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(nine);
         const action = mixer.clipAction(animations[0]);
@@ -601,7 +603,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ten.scale.set(.5, .5, .5);
+    ten.scale.set(.7, .7, .7);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ten);
         const action = mixer.clipAction(animations[0]);
@@ -642,7 +644,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    eleven.scale.set(.5, .5, .5);
+    eleven.scale.set(.7, .7, .7);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ten);
         const action = mixer.clipAction(animations[0]);
