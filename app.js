@@ -421,6 +421,10 @@ OX.init(config)
     loadGLB("range_rover.glb");
     document.getElementById("black1").addEventListener("click", () => {
       //changemodel(range_rover.glb);
+    document.getElementById("blue").style.display = "block";
+    document.getElementById("orange").style.display = "block";
+    document.getElementById("black1").style.display = "none";
+    document.getElementById("silver").style.display = "none";
      scene.add(blood);
      scene.remove(car);
      scene.remove(ethos);
