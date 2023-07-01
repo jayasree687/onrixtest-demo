@@ -855,6 +855,7 @@ OX.init(config)
      scene.remove(one);
      scene.remove(eight);	    
      scene.remove(seven);
+     scene.remove(nine);
      scene.remove(ten);	
    });
    document.getElementById("nine").addEventListener("click", () => {
@@ -873,6 +874,7 @@ OX.init(config)
      scene.remove(one);
      scene.remove(eight);	    
      scene.remove(seven);
+     scene.remove(nine);   
      scene.remove(eleven);	
    });
    document.getElementById("ten").addEventListener("click", () => {
@@ -891,6 +893,7 @@ OX.init(config)
      scene.remove(one);
      scene.remove(eight);	    
      scene.remove(seven);
+     scene.remove(nine);   
      scene.remove(ten);	
    });
   })
