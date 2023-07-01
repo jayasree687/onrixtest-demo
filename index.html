@@ -1,56 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-        <title>SEVENTHREALITY</title>
-        <script async type="module" src="app.js"></script>
-	
-	
-	
-        <link rel="stylesheet" href="app.css" />
-	
-    </head>
-    <body>
-       
-		<audio id="audio">
-			<source src="v.mp3" type="audio/mpeg">
-		</audio>
 
-        <div id="loading-screen">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-        <div id="error-screen">
-            <span id="error-title"></span>
-            <span id="error-message"></span>
-        </div>
-        <div id="initializing"></div>
-        <div id="transform-controls">
-            <input id="rotation-slider" type="range" min="0" max="360" value="180">
-            <input id="scale-slider" type="range" min="10" max="100" value="50">
-            <button id="tap-to-place">Tap to place</button>
-        </div>
-        <div id="color-controls">
-	
-            <span id="black1"><img src="Left.png" height="30" width="30"></span>
-            <span id="orange"><img src="home.png" height="30" width="30"></span>
-            <span id="blue"><img src="home.png" height="30" width="30"></span>
-            <span id="silver"><img src="Right.png" height="30" width="30"></span>
-	   <button class="slide selected" id="1" onclick="switchSrc(1,'1.glb')"></button>
-        <button class="slide" id="2" onclick="switchSrc(2,'2.glb')" style="float:right;"><img src="Right.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-        <span><button class="slide selected" id="3" onclick="switchSrc(3,'3.glb')"  style="display: none;"><img src="Left.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-        <button class="slide" onclick="switchSrc(4,'4.glb')" id="4" style="float: right;display: none;"><img src="Right.png" id="youtube-icon" style="width:40px;height:40px;"></button></span>
-        <button class="slide selected" id="5" onclick="switchSrc(5,'5.glb')"  style="display: none;"><img src="Left.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-        <button class="slide" onclick="switchSrc(6,'6.glb')" id="6" style="float: right;display: none;"><img src="Right.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-        <button class="slide selected" id="7" onclick="switchSrc(7,'7.glb')"  style="display: none;"><img src="Left.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-        <button class="slide" onclick="switchSrc(8,'8.glb')" id="8" style="float: right;display: none;"><img src="Right.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-        <button class="slide selected" id="9" onclick="switchSrc(9,'9.glb')"  style="display: none;"><img src="Left.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-	<button2  style="position:25px"; ><img src="empty.png" id="youtube-icon" style="width:99px;height:40px; position: sticky; left: 50px;"></button2>    
-	 
-        <button class="slide" onclick="switchSrc(10,'10.glb')" id="10" style="float: right;display: none;"><img src="Right.png" id="youtube-icon" style="width:40px;height:40px;"></button>
-	<button onclick="play_to_end()" style="position:25px" ><img src="play.png" id="youtube-icon" style="width:40px;height:40px; position: sticky; left: 50px;"></button>    	
-        </div>
-	
-    </body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <title>SEVENTHREALITY</title>
+  <script async type="module" src="app.js"></script>
+
+
+
+  <link rel="stylesheet" href="app.css" />
+
+</head>
+
+<body>
+
+  <audio id="audio">
+    <source src="v.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="loading-screen">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+  <div id="error-screen">
+    <span id="error-title"></span>
+    <span id="error-message"></span>
+  </div>
+  <div id="initializing"></div>
+  <div id="transform-controls">
+    <input id="rotation-slider" type="range" min="0" max="360" value="180">
+    <input id="scale-slider" type="range" min="10" max="100" value="50">
+    <button id="tap-to-place">Tap to place</button>
+  </div>
+  <div id="color-controls">
+
+    <span id="black1"><img src="Left.png" height="30" width="30"></span>
+    <span id="blue" style="display:none"><img src="home.png" height="30" width="30"></span>
+    <span id="orange" style="display:none"><img src="home.png" height="30" width="30"></span>
+    <span id="silver"><img src="Right.png" height="30" width="30"></span>
+
+  </div>
+  
+</body>
+
 </html>
