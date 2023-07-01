@@ -139,7 +139,7 @@ body {
     display: none;
     z-index: 2;
 }
-#black, #silver, #orange, #blue {
+#one, #two, #three, #four {
     display: inline-block;
     width: 50px;
     margin: 10px;
@@ -460,7 +460,6 @@ button1.disabled {
     transform: translate3d(-50%, -50%, 0);
     z-index: 100;
   }
-
 
 
 
