@@ -127,7 +127,10 @@ function onHitResult(hitResult) {
     document.getElementById("transform-controls").style.display = "block";
     one.position.copy(hitResult.position);
   }
-  
+  if (eleven && !isCarPlaced) {
+    document.getElementById("transform-controls").style.display = "block";
+    one.position.copy(hitResult.position);
+  }
 }
 
 function placeCar() {
@@ -190,6 +193,9 @@ function rotatevital(value) {
 function rotatevital(value) {
   ten.rotation.y = value;
 }
+function rotatevital(value) {
+  eleven.rotation.y = value;
+}
 function changemodel(value) {
   car.traverse((child) => {
     if (child.material && child.material.name === "CarPaint") {
@@ -229,7 +235,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    car.scale.set(0.5, 0.5, 0.5);
+    car.scale.set(1, 1, 1);
     scene.add(car);
     const mixer = new THREE.AnimationMixer(car);
         const action = mixer.clipAction(animations[0]);
@@ -269,7 +275,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    ethos.scale.set(0.5, 0.5, 0.5);
+    ethos.scale.set(1, 1, 1);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ethos);
         const action = mixer.clipAction(animations[0]);
@@ -309,7 +315,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    blood.scale.set(0.5, 0.5, 0.5);
+    blood.scale.set(1, 1, 1);
     // scene.add(blood);
     const mixer = new THREE.AnimationMixer(blood);
         const action = mixer.clipAction(animations[0]);
@@ -349,7 +355,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    cARM.scale.set(0.5, 0.5, 0.5);
+    cARM.scale.set(1, 1, 1);
     // scene.add(cARM);
     const mixer = new THREE.AnimationMixer(cARM);
         const action = mixer.clipAction(animations[0]);
@@ -389,7 +395,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    one.scale.set(0.5, 0.5, 0.5);
+    one.scale.set(1, 1, 1);
     // scene.add(vital);
     const mixer = new THREE.AnimationMixer(one);
         const action = mixer.clipAction(animations[0]);
@@ -421,7 +427,7 @@ function loadGLB(filename){
         child.material.needsUpdate = true;
       }
     });
-    vital.scale.set(0.5, 0.5, 0.5);
+    vital.scale.set(1, 1, 1);
     // scene.add(vital);
     const mixer = new THREE.AnimationMixer(vital);
         const action = mixer.clipAction(animations[0]);
@@ -452,7 +458,7 @@ gltfLoader.load("7.glb", (gltf) => {
         child.material.needsUpdate = true;
       }
     });
-    seven.scale.set(0.5, 0.5, 0.5);
+    seven.scale.set(1, 1, 1);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(seven);
         const action = mixer.clipAction(animations[0]);
@@ -492,7 +498,7 @@ gltfLoader.load("8.glb", (gltf) => {
         child.material.needsUpdate = true;
       }
     });
-    eight.scale.set(0.5, 0.5, 0.5);
+    eight.scale.set(1, 1, 1);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(eight);
         const action = mixer.clipAction(animations[0]);
@@ -532,7 +538,7 @@ gltfLoader.load("9.glb", (gltf) => {
         child.material.needsUpdate = true;
       }
     });
-    nine.scale.set(0.5, 0.5, 0.5);
+    nine.scale.set(1, 1, 1);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(nine);
         const action = mixer.clipAction(animations[0]);
@@ -572,7 +578,7 @@ gltfLoader.load("10.glb", (gltf) => {
         child.material.needsUpdate = true;
       }
     });
-    ten.scale.set(0.5, 0.5, 0.5);
+    ten.scale.set(1, 1, 1);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ten);
         const action = mixer.clipAction(animations[0]);
@@ -612,7 +618,7 @@ gltfLoader.load("10.glb", (gltf) => {
         child.material.needsUpdate = true;
       }
     });
-    eleven.scale.set(0.5, 0.5, 0.5);
+    eleven.scale.set(1, 1, 1);
     // scene.add(ethos);
     const mixer = new THREE.AnimationMixer(ten);
         const action = mixer.clipAction(animations[0]);
