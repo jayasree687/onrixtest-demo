@@ -26,12 +26,14 @@ function setupRenderer(rendererCanvas) {
   renderer.setClearColor(0x000000, 0);
   renderer.setSize(width, height);
   renderer.outputEncoding = THREE.sRGBEncoding;
+  document.body.appendChild( renderer.domElement );
 
   // Ask Onirix SDK for camera parameters to create a 3D camera that fits with the AR projection.
   const cameraParams = OX.getCameraParameters();
   camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, 0.1, 1000);
   const controls = new OrbitControls( camera, renderer.domElement );
   camera.matrixAutoUpdate = false;
+  camera.position.set( 0, 20, 100 );
   controls.update()
 
   // Create an empty scene
