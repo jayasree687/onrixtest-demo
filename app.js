@@ -5,6 +5,7 @@
 import OnirixSDK from "https://unpkg.com/@onirix/ar-engine-sdk@1.3.1/dist/ox-sdk.esm.js";
 import * as THREE from "https://cdn.skypack.dev/three@0.127.0";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 
 // ====== ThreeJS ======
@@ -21,19 +22,6 @@ function setupRenderer(rendererCanvas) {
   const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 
   // Initialize renderer with rendererCanvas provided by Onirix SDK
-  let orbitControls = new THREE.OrbitControls(camera);
-  var gui = new dat.GUI();
-  var guiCamera = gui.addFolder('Camera');
-
-
-    guiCamera.add(cameraControls, 'speed', 0, 0.1).step(0.001).onChange(function (value) {
-      cameraRotationSpeed = value;
-    });
-    guiCamera.add(cameraControls, 'orbitControls').onChange(function (value) {
-      cameraAutoRotation = !value;
-      orbitControls.enabled = value;
-    });
-
   renderer = new THREE.WebGLRenderer({ canvas: rendererCanvas, alpha: true });
   renderer.setClearColor(0x000000, 0);
   renderer.setSize(width, height);
@@ -42,9 +30,9 @@ function setupRenderer(rendererCanvas) {
   // Ask Onirix SDK for camera parameters to create a 3D camera that fits with the AR projection.
   const cameraParams = OX.getCameraParameters();
   camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, 0.1, 1000);
+  const controls = new OrbitControls( camera, renderer.domElement );
   camera.matrixAutoUpdate = false;
-  orbitControls.enabled = !cameraAutoRotation;
-	
+  controls.update()
 
   // Create an empty scene
   scene = new THREE.Scene();
