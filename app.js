@@ -13,6 +13,10 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/l
 var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, one,seven,eight,nine,ten,eleven, envMap,clock,animationMixers;
 var isCarPlaced = false;
 var isEthosPlaced= false;
+let cameraAutoRotation = true;
+let orbitControls = new THREE.OrbitControls(camera);
+var gui = new dat.GUI();
+var guiCamera = gui.addFolder('Camera');
 function setupRenderer(rendererCanvas) {
   
   const width = rendererCanvas.width;
@@ -30,7 +34,8 @@ function setupRenderer(rendererCanvas) {
   const cameraParams = OX.getCameraParameters();
   camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, 0.1, 1000);
   camera.matrixAutoUpdate = false;
-  
+  camera.position.set(1, 1, 1);
+  orbitControls.enabled = !cameraAutoRotation;
 	
 
   // Create an empty scene
@@ -705,6 +710,15 @@ OX.init(config)
   .then((rendererCanvas) => {
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
+   
+
+    guiCamera.add(cameraControls, 'speed', 0, 0.1).step(0.001).onChange(function (value) {
+      cameraRotationSpeed = value;
+    });
+    guiCamera.add(cameraControls, 'orbitControls').onChange(function (value) {
+      cameraAutoRotation = !value;
+      orbitControls.enabled = value;
+    });
     // Load car model
     loadGLB("1.glb");
     document.getElementById("one").addEventListener("click", () => {
