@@ -4,7 +4,6 @@
 
 import OnirixSDK from "https://unpkg.com/@onirix/ar-engine-sdk@1.3.1/dist/ox-sdk.esm.js";
 import * as THREE from "https://cdn.skypack.dev/three@0.127.0";
-import { OrbitControls } from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
 
@@ -27,13 +26,13 @@ function setupRenderer(rendererCanvas) {
   var guiCamera = gui.addFolder('Camera');
 
 
-  guiCamera.add(cameraControls, 'speed', 0, 0.1).step(0.001).onChange(function (value) {
-    cameraRotationSpeed = value;
-  });
-  guiCamera.add(cameraControls, 'orbitControls').onChange(function (value) {
-    cameraAutoRotation = !value;
-    orbitControls.enabled = value;
-  });
+    guiCamera.add(cameraControls, 'speed', 0, 0.1).step(0.001).onChange(function (value) {
+      cameraRotationSpeed = value;
+    });
+    guiCamera.add(cameraControls, 'orbitControls').onChange(function (value) {
+      cameraAutoRotation = !value;
+      orbitControls.enabled = value;
+    });
 
   renderer = new THREE.WebGLRenderer({ canvas: rendererCanvas, alpha: true });
   renderer.setClearColor(0x000000, 0);
