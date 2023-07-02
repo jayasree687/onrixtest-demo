@@ -14,9 +14,6 @@ var renderer, scene, camera, floor, car, ethos,blood,cARM,vital, one,seven,eight
 var isCarPlaced = false;
 var isEthosPlaced= false;
 let cameraAutoRotation = true;
-let orbitControls = new THREE.OrbitControls(camera);
-var gui = new dat.GUI();
-var guiCamera = gui.addFolder('Camera');
 function setupRenderer(rendererCanvas) {
   
   const width = rendererCanvas.width;
@@ -25,6 +22,11 @@ function setupRenderer(rendererCanvas) {
   const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 
   // Initialize renderer with rendererCanvas provided by Onirix SDK
+  let orbitControls = new THREE.OrbitControls(camera);
+  var gui = new dat.GUI();
+  var guiCamera = gui.addFolder('Camera');
+
+
   renderer = new THREE.WebGLRenderer({ canvas: rendererCanvas, alpha: true });
   renderer.setClearColor(0x000000, 0);
   renderer.setSize(width, height);
