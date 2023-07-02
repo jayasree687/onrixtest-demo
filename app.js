@@ -22,10 +22,6 @@ function setupRenderer(rendererCanvas) {
   const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
 
   // Initialize renderer with rendererCanvas provided by Onirix SDK
-  let orbitControls = new THREE.OrbitControls(camera);
-  var gui = new dat.GUI();
-  var guiCamera = gui.addFolder('Camera');
-
 
   renderer = new THREE.WebGLRenderer({ canvas: rendererCanvas, alpha: true });
   renderer.setClearColor(0x000000, 0);
@@ -712,7 +708,9 @@ OX.init(config)
   .then((rendererCanvas) => {
     // Setup ThreeJS renderer
     setupRenderer(rendererCanvas);
-   
+    let orbitControls = new THREE.OrbitControls(camera);
+    var gui = new dat.GUI();
+    var guiCamera = gui.addFolder('Camera');
 
     guiCamera.add(cameraControls, 'speed', 0, 0.1).step(0.001).onChange(function (value) {
       cameraRotationSpeed = value;
