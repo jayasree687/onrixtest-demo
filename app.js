@@ -43,7 +43,6 @@ function setupRenderer(rendererCanvas) {
   const cameraParams = OX.getCameraParameters();
   camera = new THREE.PerspectiveCamera(cameraParams.fov, cameraParams.aspect, 0.1, 1000);
   camera.matrixAutoUpdate = false;
-  camera.position.set(1, 1, 1);
   orbitControls.enabled = !cameraAutoRotation;
 	
 
